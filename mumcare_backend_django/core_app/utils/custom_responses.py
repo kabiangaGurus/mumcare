@@ -1,0 +1,8 @@
+from django.http import HttpResponse
+import json
+forbbiden_json = {
+    'status': '403',
+    'Message': 'You do not have the correct perms to access this site'
+}
+
+forbidden_response = HttpResponse(json.dumps(forbbiden_json), content_type='application/json')
