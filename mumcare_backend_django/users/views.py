@@ -67,7 +67,7 @@ def get_unique_code(request):
         }
         return HttpResponseForbidden(json.dumps(response_json), content_type='application/json')
 
-    phone = '254' + str(int(phone))
+    phone = '+254' + str(int(phone))
 
     send_sms(f'Your verification code is : {auth_code}', [phone])
     AuthenticationCodes.objects.create(

@@ -9,7 +9,7 @@ from users.models import (
 # Register your models here.
 class RoleAdmin(admin.ModelAdmin):
     fields = ('role_name',)
-    list_display = ('id', 'role_name')
+    list_display = ('role_name',)
 
 
 class UserAdmin(admin.ModelAdmin):
