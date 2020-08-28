@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mumcareapp/constants/colors.dart';
 import 'package:mumcareapp/screens/admin/articles/mainArticlePage.dart';
 import 'package:mumcareapp/screens/admin/dashboard.dart';
+import 'package:mumcareapp/screens/admin/patient/patient.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _MainScreenState extends State<MainScreen> {
         onPageChanged: onPageChanged,
         children: [
           SlideInLeft(child: new OfficerDashBoard()),
-                    ZoomIn(child: new Container()),
+                    ZoomIn(child: new CreatePatient()),
 
           SlideInRight(child: new MainArticlePage()),
           // SlideInDown(child: new MyProfilePage()),
