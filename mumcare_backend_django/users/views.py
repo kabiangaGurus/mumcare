@@ -3,10 +3,12 @@ from core_app.utils.utils import (
     generate_code,
     send_sms
 )
+from core_app.settings import BASE_DIR
 from django.http import (
     HttpResponse,
     HttpResponseBadRequest,
     HttpResponseForbidden,
+    HttpResponseNotFound,
 )
 
 from django.core.handlers.wsgi import WSGIRequest
@@ -207,3 +209,30 @@ def add_appointment(request):
     ).save()
 
     return HttpResponse()
+
+
+def load_static(request, path=''):
+    ext = path.split('.')[-1]
+    if ext == 'css':
+        content_type = 'text/css'
+    elif ext == 'js':
+        content_type = 'application/javascript'
+    elif ext == 'ico':
+        content_type = 'image,x-icon'
+    elif ext == 'png':
+        content_type = 'image/png'
+    elif ext == 'jpg' or ext == 'jpeg':
+        content_type = 'image,jpeg'
+    else:
+        content_type = ''
+
+    try:
+        pathx = 'static/' + path
+        with open(pathx, 'rb') as f:
+            data = f.read()
+        return HttpResponse(data, content_type=content_type)
+    except FileNotFoundError:
+        return HttpResponseNotFound()
+    except Exception:
+        return HttpResponseNotFound()
+
