@@ -12,10 +12,13 @@
 // }
 import 'dart:async';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mumcareapp/constants/colors.dart';
 import 'package:mumcareapp/constants/textstyle.dart';
+import 'package:mumcareapp/screens/admin/dashboard.dart';
+import 'package:mumcareapp/screens/mainscreen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerifyPhonePin extends StatefulWidget {
@@ -227,8 +230,8 @@ String finaldata;
                     ),
                     onPressed: () {
                       print(currentText);
-                      // Navigator.of(context).push(
-                      // MaterialPageRoute(builder: (context) => FadeInUp(child: SelectBirthDate())));
+                      Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => FadeInUp(child: MainScreen())));
                     },
                     color: purple,
                     child: Text("Verify", style: authButton),
