@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mumcareapp/constants/color2.dart';
 import 'package:mumcareapp/constants/textstyle2.dart';
+import 'package:mumcareapp/screens/admin/appointments/active.dart';
+import 'package:mumcareapp/screens/admin/appointments/missed.dart';
+import 'package:mumcareapp/screens/admin/members.dart';
 
 class OfficerDashBoard extends StatefulWidget {
   @override
@@ -88,7 +91,12 @@ class _OfficerDashBoardState extends State<OfficerDashBoard>
                         child: Card(
                           child: InkWell(
                             splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {},
+                            onTap: () {
+
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => AntenatalMembers()));
+                              
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
@@ -123,7 +131,12 @@ class _OfficerDashBoardState extends State<OfficerDashBoard>
                       Card(
                         child: InkWell(
                           splashColor: Colors.blue.withAlpha(30),
-                          onTap: () {},
+                          onTap: () {
+
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ActiveAppointments()));
+                            
+                          },
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
@@ -160,7 +173,9 @@ class _OfficerDashBoardState extends State<OfficerDashBoard>
                         child: InkWell(
                           splashColor: Colors.blue.withAlpha(30),
                           onTap: () {
-                            print('Card tapped.');
+                            // print('Card tapped.');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => MissedAppointments()));
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -283,9 +298,12 @@ class _OfficerDashBoardState extends State<OfficerDashBoard>
                           color: Colors.green,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text('Seen',style: TextStyle(
-                              color: colorWhite,
-                            ),),
+                            child: Text(
+                              'Seen',
+                              style: TextStyle(
+                                color: colorWhite,
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -329,9 +347,12 @@ class _OfficerDashBoardState extends State<OfficerDashBoard>
                           color: Colors.green,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text('Seen',style: TextStyle(
-                              color: colorWhite,
-                            ),),
+                            child: Text(
+                              'Seen',
+                              style: TextStyle(
+                                color: colorWhite,
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -339,105 +360,6 @@ class _OfficerDashBoardState extends State<OfficerDashBoard>
                   ),
                 ),
               ),
-
-              
-              Container(
-                width: MediaQuery.of(context).size.width,
-                child: Card(
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Mary Reaky',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.black,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5.0,
-                            ),
-                            Text(
-                              'Kericho Town',
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          color: Colors.green,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text('Seen',style: TextStyle(
-                              color: colorWhite,
-                            ),),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-
-              
-              Container(
-                width: MediaQuery.of(context).size.width,
-                child: Card(
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Mary Reaky',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.black,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5.0,
-                            ),
-                            Text(
-                              'Kericho Town',
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          color: Colors.green,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text('Seen',style: TextStyle(
-                              color: colorWhite,
-                            ),),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-
-
-              ),
-
-
 
               Container(
                 width: MediaQuery.of(context).size.width,
@@ -474,9 +396,12 @@ class _OfficerDashBoardState extends State<OfficerDashBoard>
                           color: Colors.green,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text('Seen',style: TextStyle(
-                              color: colorWhite,
-                            ),),
+                            child: Text(
+                              'Seen',
+                              style: TextStyle(
+                                color: colorWhite,
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -484,8 +409,6 @@ class _OfficerDashBoardState extends State<OfficerDashBoard>
                   ),
                 ),
               ),
-
-
 
               Container(
                 width: MediaQuery.of(context).size.width,
@@ -522,9 +445,110 @@ class _OfficerDashBoardState extends State<OfficerDashBoard>
                           color: Colors.green,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text('Seen',style: TextStyle(
-                              color: colorWhite,
-                            ),),
+                            child: Text(
+                              'Seen',
+                              style: TextStyle(
+                                color: colorWhite,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'Mary Reaky',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                color: Colors.black,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text(
+                              'Kericho Town',
+                              style: TextStyle(
+                                fontSize: 14.0,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          color: Colors.green,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Seen',
+                              style: TextStyle(
+                                color: colorWhite,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'Mary Reaky',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                color: Colors.black,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text(
+                              'Kericho Town',
+                              style: TextStyle(
+                                fontSize: 14.0,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          color: Colors.green,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Seen',
+                              style: TextStyle(
+                                color: colorWhite,
+                              ),
+                            ),
                           ),
                         ),
                       ],

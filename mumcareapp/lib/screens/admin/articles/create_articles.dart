@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mumcareapp/constants/colors.dart';
 import 'package:mumcareapp/constants/textstyle.dart';
 
-
 class CreateArticle extends StatefulWidget {
   @override
   _CreateArticleState createState() => _CreateArticleState();
@@ -32,18 +31,11 @@ class _CreateArticleState extends State<CreateArticle> {
 
   final picker = ImagePicker();
 
-  @override
-  void initState() {
-    initial();
-    super.initState();
-  }
-
   Future selectPhoto() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
       _image = File(pickedFile.path);
-      // print("imagespath $_image");
     });
   }
 
@@ -53,40 +45,12 @@ class _CreateArticleState extends State<CreateArticle> {
     });
   }
 
-  void initial() async {
-    // SharedPreferences pref = await SharedPreferences.getInstance();
-    setState(() {
-      // image = pref.getString('image');
-      // title = pref.getString('event_title');
-      // description = pref.getString('event_description');
-      // eventDate = pref.getString('event_date');
-      // print(eventDate);
-      // eventStartTime = pref.getString('event_start_time');
-      // eventEndTime = pref.getString('event_end_time');
-      // organiserName = pref.getString('organiser_name');
-      // print(organiserName);
-
-      // organiserDescription = pref.getString('organiser_description');
-      // organiserTwitter = pref.getString('organiser_twitter');
-      // organiserFacebook = pref.getString('organiser_facebook');
-      // eventCategory = pref.getString('event_category');
-      // eventType = pref.getString('event_type');
-      // eventPrice = pref.getInt('event_price');
-      // eventTickets = pref.getInt('event_tickets');
-      // eventLimitTickets = pref.getInt('event_limit_tickets');
-      // eventRefundPolicy = pref.getBool('event_refund_policy');
-      // eventLocationName = pref.getString('event_location_name');
-      // print(eventLocationName);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return new Scaffold(
       key: _scaffoldKey,
-      
       body: Container(
         margin: EdgeInsets.only(top: 20),
         child: new Form(
@@ -142,8 +106,6 @@ class _CreateArticleState extends State<CreateArticle> {
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 Divider(),
-               
-
 
                 SizedBox(
                   height: height * 0.04,
@@ -214,7 +176,7 @@ class _CreateArticleState extends State<CreateArticle> {
                           children: <Widget>[
                             InkWell(
                               onTap: () {
-                                // showFancyCustomDialog(context);
+                                showFancyCustomDialog(context);
                                 print('Image');
                               },
                               child: Container(
@@ -286,95 +248,97 @@ class _CreateArticleState extends State<CreateArticle> {
                 //     height: height * 0.2,
                 // child: Image.file(_image),
                 //   ),
-
-                checkventDate != null &&
-                        checkventLocation != null &&
-                        _image != null
-                    ? Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          margin: EdgeInsets.only(top: 30),
-                          // color: Colors.transparent,
-                          width: MediaQuery.of(context).size.width,
-                          height: 60,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
-                            child: FlatButton(
-                              shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(8.0),
-                              ),
-                              onPressed: () {
-                                if (_formKey.currentState.validate()) {
-                                  // _saveEventTitle();
-                                  // _saveEventDescription();
-                                  // _saveImage(_image.path);
-                                  // Navigator.of(context).push(MaterialPageRoute(
-                                  //     builder: (context) => Ticketing()));
-                                }
-                              },
-                              color: purple,
-                              child: Text("Save & Continue", style: authButton),
-                            ),
-                          ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    margin: EdgeInsets.only(top: 30),
+                    // color: Colors.transparent,
+                    width: MediaQuery.of(context).size.width,
+                    height: 60,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+                      child: FlatButton(
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(8.0),
                         ),
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          margin: EdgeInsets.only(top: 30),
-                          // color: Colors.transparent,
-                          width: MediaQuery.of(context).size.width,
-                          height: 60,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
-                            child: FlatButton(
-                              shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(8.0),
-                              ),
-                              onPressed: () {
-                                if (_formKey.currentState.validate()) {
-                                  if (checkventDate == null) {
-                                    _scaffoldKey.currentState
-                                        .showSnackBar(SnackBar(
-                                      backgroundColor: Colors.red,
-                                      content: Text('Select Dates Required'),
-                                      duration: Duration(seconds: 2),
-                                    ));
-                                  } else if (checkventLocation == null) {
-                                    _scaffoldKey.currentState
-                                        .showSnackBar(SnackBar(
-                                      backgroundColor: Colors.red,
-                                      content: Text('Event Locations Required'),
-                                      duration: Duration(seconds: 2),
-                                    ));
-                                  } else if (_image == null) {
-                                    _scaffoldKey.currentState
-                                        .showSnackBar(SnackBar(
-                                      backgroundColor: Colors.red,
-                                      content: Text('Image Required'),
-                                      duration: Duration(seconds: 2),
-                                    ));
-                                  } else {
-                                    _scaffoldKey.currentState
-                                        .showSnackBar(SnackBar(
-                                      backgroundColor: Colors.red,
-                                      content: Text(
-                                          'Enter All Event Details Required'),
-                                      duration: Duration(seconds: 2),
-                                    ));
-                                  }
-                                }
-                              },
-                              color: purple,
-                              child: Text("Save & Continue ", style: authButton),
-                            ),
-                          ),
-                        ),
+                        onPressed: () {
+                          _image == null ?_scaffoldKey.currentState.showSnackBar(SnackBar(
+                                backgroundColor: Colors.red,
+                                content: Text('Image Required'),
+                                duration: Duration(seconds: 2),
+                              )) :
+                          // if (_formKey.currentState.validate()) {
+                            
+                            _scaffoldKey.currentState.showSnackBar(SnackBar(
+                              backgroundColor: Colors.green,
+                              content: Text('Article Created Successfully'),
+                              duration: Duration(seconds: 2),
+                            ));
+                          // }
+                        },
+                        color: purple,
+                        child: Text("Submit", style: authButton),
                       ),
+                    ),
+                  ),
+                )
               ],
             )),
       ),
     );
   }
 
+  void showFancyCustomDialog(BuildContext context) {
+    Dialog dialogWithImage = Dialog(
+      backgroundColor: Colors.transparent,
+      child: Container(
+        color: Colors.transparent,
+        height: MediaQuery.of(context).size.height * 0.55,
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(color: Colors.transparent),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Text(
+                      "Cancel",
+                      style: TextStyle(
+                          color: authlink,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    IconButton(
+                        icon: Icon(
+                          Icons.cancel,
+                          color: authlink,
+                          size: 20,
+                        ),
+                        onPressed: null)
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.44,
+              width: MediaQuery.of(context).size.width,
+              child: Image.file(
+                _image,
+                fit: BoxFit.fill,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    showDialog(
+        context: context, builder: (BuildContext context) => dialogWithImage);
+  }
 }
