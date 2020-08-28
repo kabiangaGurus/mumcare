@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from core_app.utils.utils import *
+from django.contrib import admin
 
 
 # Create your models here.
@@ -15,9 +16,14 @@ class CustomUser(User):
         return self.role.role_name == role
 
 
+admin.site.register(CustomUser)
+
+
 class Role(models.Model):
     role_name = models.CharField(max_length=100, null=False, blank=False)
 
+
+admin.site.register(Role)
 
 APPOINTMENT_STATUS = [
     ('N', 'None'),
@@ -34,6 +40,9 @@ class Appointment(models.Model):
         max_length=10,
         choices=APPOINTMENT_STATUS,
         default='N')
+
+
+admin.site.register(Appointment)
 
 
 class AuthenticationCodes(models.Model):
