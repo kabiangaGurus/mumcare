@@ -7,9 +7,9 @@ from core_app.utils.utils import *
 
 class CustomUser(User):
     role = models.ForeignKey('Role', on_delete=models.CASCADE)
-    session_id = models.CharField(max_length=100, default='')
+    session_id = models.CharField(max_length=100, default='', unique=True)
     phone_number = models.CharField(max_length=10, unique=True)
-    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
 
     def has_role(self, role: str):
         return self.role.role_name == role
