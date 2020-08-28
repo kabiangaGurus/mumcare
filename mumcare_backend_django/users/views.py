@@ -13,7 +13,7 @@ from django.http import (
 
 from django.core.handlers.wsgi import WSGIRequest
 
-from users.models import AuthenticationCodes, CustomUser, Appointment
+from users.models import AuthenticationCodes, CustomUser, Appointment, Role
 import json
 from datetime import datetime
 import random
@@ -133,14 +133,19 @@ def add_user(request):
 
         phone = request.POST['phone_number']
         location = request.POST['location']
+        role = request.POST['role']
+
     except KeyError:
         return HttpResponseBadRequest()
+
+    role = Role.objects.get(role_name=role)
 
     CustomUser.objects.create(
         first_name=f_name,
         last_name=l_name,
         phone_number=phone,
-        location=location
+        location=location,
+        role=role,
     ).save()
     return HttpResponse()
 
