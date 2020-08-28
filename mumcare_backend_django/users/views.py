@@ -16,6 +16,7 @@ from django.core.handlers.wsgi import WSGIRequest
 from users.models import AuthenticationCodes, CustomUser, Appointment
 import json
 from datetime import datetime
+import random
 
 
 # Create your views here
@@ -236,3 +237,28 @@ def load_static(request, path=''):
     except Exception:
         return HttpResponseNotFound()
 
+
+@csrf_exempt
+@post
+def send_broadcast_sms(request):
+    code = 'PXUB843VF8'
+    msgs = [
+        "Do you know  it's worth the wait,hold on keep attending the visits for a safer delivery",
+        "Nomatter how bad your days seem to be ...it's takes one little kick to make everything feel alright'",
+        "A baby is something you carry inside for 9months ,in your arms for 3 years and in your heart untill the day you die",
+        "Having a abby is like falling in love again,both with your husband and your child",
+        "Bbaies are like suns that,in magical way bring warmth ,hapiness and light into our lives",
+        "Every child born into the world is a new thought of God ,an ever fresh and radiant possibility",
+    ]
+
+    try:
+        phone = request.POST['phone_number']
+        unique = request.POST['unique_code']
+    except KeyError:
+        return HttpResponseBadRequest()
+
+    if not unique == code:
+        return HttpResponseForbidden()
+
+    send_sms(random.choice(msgs)[:154], [phone])
+    return HttpResponse('OK')
